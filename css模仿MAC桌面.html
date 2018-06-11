@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>MAC桌面</title>
+	<style>
+	/*清除所有元素内外边距，这是一个笨方法，不适合在实际开发中使用*/
+	/*元素大小用百分百，会有一个类似响应式的样子*/
+	*{
+		margin:0;
+		padding: 0;
+	}
+	html{
+			width:100%;
+			height:100%;
+		}
+      body{
+	      	width:100%;
+			height:100%;
+            background-image:url('images/bg.jpg');
+            background-repeat:no-repeat;
+            background-size:cover;
+            background-position:center;
+      }
+      .desk{
+      	width:80%;
+      	height: 100px;
+      	background:rgba(255,255,255,.2);
+      	position: fixed;
+      	bottom: 0;
+      	left: 10%;
+      	border-radius: 10px 10px 0 0;
+      }
+      /*这里用到弹性盒子的方法*/
+      .desk .nav{
+      	width:100%;
+      	height: 60px;
+      	margin:20px 0;
+      	justify-content: center;
+      	display: flex;
+      }
+      /*li为span的父元素，添加相对定位*/
+      .desk .nav li{
+      	list-style: none;
+      	position: relative;
+      	margin: 0 2px;
+      }
+      .desk .nav li img{
+      	width:50px;
+      	height: 50px;
+      	transition: 0.3s;
+      	/*谷歌特有的属性，只有在谷歌下才有倒影显示*/
+      	-webkit-box-reflect:below 2px -webkit-linear-gradient(top,transparent,transparent 60%,rgba(255,255,255,.5));
+      	-webkit-transform-origin: 40% 70%;
+      	-moz-transform-origin: 40% 70%;
+      	-ms-transform-origin: 40% 70%;
+      	-o-transform-origin: 40% 70%;
+      	transform-origin: 40% 70%;
+      }
+      /*hover li时，图片放大为原来的2倍*/
+      .desk .nav li:hover img{
+      	-webkit-transform: scale(2);
+      	-ms-transform: scale(2);
+      	-o-transform: scale(2);
+      	transform: scale(2);
+      	margin: 0 30px;
+      }
+      /*hover li时，它的兄弟元素放大1.5倍并有一个左右为15px外边距*/
+      .desk .nav li:hover +li img{
+      	-webkit-transform: scale(1.5);
+      	-ms-transform: scale(1.5);
+      	-o-transform: scale(1.5);
+      	transform: scale(1.5);
+      	margin: 0 15px;
+      }
+      /*为文字span添加绝对定位（父相子绝），在为span添加放大为0的效果，即为隐藏了，任何数乘0都为0*/
+      .desk .nav li span{
+      	position: absolute;
+      	left: 0;
+      	bottom:100px;
+      	width:100%;
+      	text-align: center;
+      	background-color: #fff;
+      	padding: 4px 0;
+      	border-radius: 7px;
+      	-webkit-transform: scale(0);
+      	-ms-transform: scale(0);
+      	-o-transform: scale(0);
+      	transform: scale(0);
+      }
+      /*hover li时 span进行放大为原来的一倍*/
+      .desk .nav li:hover span{
+      	-webkit-transform: scale(1);
+      	-ms-transform: scale(1);
+      	-o-transform: scale(1);
+      	transform: scale(1);
+      }
+	</style>
+</head>
+<body>
+	<!-- 一个包含的box -->
+	<div class="desk">
+		<!-- 用排列的方式 -->
+		<ul class="nav">
+			<li>
+				<span>Finder</span>
+				<img src="images/1.png" alt=""></li>
+			<li>
+				<span>Chrome</span>
+				<img src="images/2.png" alt=""></li>
+			<li>
+				<span>Firefox</span>
+				<img src="images/3.png" alt=""></li>
+			<li>
+                <span>App Store</span>
+				<img src="images/4.png" alt=""></li>
+			<li>
+                <span>Codepen</span>
+				<img src="images/5.png" alt=""></li>
+			<li>
+				 <span>Launchpad</span>
+				<img src="images/6.png" alt=""></li>
+			<li>
+				<span>System pereferences</span>
+
+				<img src="images/7.png" alt=""></li>
+			<li> <span>Siri</span>
+				<img src="images/8.png" alt=""></li>
+			<li><span>iTunes</span>
+				<img src="images/9.png" alt="">
+			</li>
+		</ul>
+	</div>
+</body>
+</html>
